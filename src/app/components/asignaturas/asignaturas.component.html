@@ -1,0 +1,111 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-1 ">
+        <h2 class="text-2xl font-bold mb-4">Asignación de Asignatura</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-0">
+    <div class="flex justify-center">
+        <h4 class="text-2xl font-bold text-red-500 mr-1 mb-0">Selecciona un Ciclo Escolar</h4>
+    </div>
+    <div class="flex justify-center">
+    <select class="w-2/4 p-2 border border-gray-300 rounded-md text-sm" [(ngModel)]="cicloEscolarSeleccionado">
+        <option value="2023">Ciclo Escolar Agosto-Diciembre</option>
+        <option value="2024">Ciclo Escolar Enero-Junio</option>
+    </select>
+    </div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-1 ">
+    <h1></h1>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="w-full col-span-1 mb-4">
+        <div *ngIf="cicloEscolarSeleccionado === '2023'" >
+            <h5>Selecciona un Semestre:</h5>
+            <select class="w-full p-2 border border-gray-300 rounded-md text-sm" [(ngModel)]="semestreSeleccionado" (ngModelChange)="onSemestreChange()">
+                <option value="semestre1">Semestre 1</option>
+                <option value="semestre3">Semestre 3</option>
+                <option value="semestre5">Semestre 5</option>
+            </select>
+        </div>
+
+        <div *ngIf="cicloEscolarSeleccionado === '2024'" >
+            <h5>Selecciona un Semestre:</h5>
+            <select class="w-full p-2 border border-gray-300 rounded-md text-sm" [(ngModel)]="semestreSeleccionado" (ngModelChange)="onSemestreChange()">
+                <option value="semestre2">Semestre 2</option>
+                <option value="semestre4">Semestre 4</option>
+                <option value="semestre6">Semestre 6</option>
+            </select>
+        </div>
+    </div>
+    <div class="w-full col-span-2 lex justify-center">
+
+        <div *ngIf="semestreSeleccionado === 'semestre1'">
+            <h5 class="text-lg font-bold mb-2">Materias del Semestre 1:</h5>
+            <div *ngFor="let materia of materiasSemestre1">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" [(ngModel)]="materia.selected" class="form-checkbox text-blue-500">
+                    <span class="ml-2">{{ materia.nombre }}</span>
+                </label>
+            </div>
+        </div>
+
+        <div *ngIf="semestreSeleccionado === 'semestre2'">
+            <h5 class="text-lg font-bold mb-2">Materias del Semestre 2:</h5>
+            <div *ngFor="let materia of materiasSemestre2">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" [(ngModel)]="materia.selected" class="form-checkbox text-blue-500">
+                    <span class="ml-2">{{ materia.nombre }}</span>
+                </label>
+            </div>
+        </div>
+
+        <div *ngIf="semestreSeleccionado === 'semestre3'">
+            <h5 class="text-lg font-bold mb-2">Materias del Semestre 3:</h5>
+            <div *ngFor="let materia of materiasSemestre3">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" [(ngModel)]="materia.selected" class="form-checkbox text-blue-500">
+                    <span class="ml-2">{{ materia.nombre }}</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Repite el mismo patrón para los demás semestres -->
+
+        <!-- Semestre 4 -->
+        <div *ngIf="semestreSeleccionado === 'semestre4'">
+            <h5 class="text-lg font-bold mb-2">Materias del Semestre 4:</h5>
+            <div *ngFor="let materia of materiasSemestre4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" [(ngModel)]="materia.selected" class="form-checkbox text-blue-500">
+                    <span class="ml-2">{{ materia.nombre }}</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Semestre 5 -->
+        <div *ngIf="semestreSeleccionado === 'semestre5'">
+            <h5 class="text-lg font-bold mb-2">Materias del Semestre 5:</h5>
+            <div *ngFor="let materia of materiasSemestre5">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" [(ngModel)]="materia.selected" class="form-checkbox text-blue-500">
+                    <span class="ml-2">{{ materia.nombre }}</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Semestre 6 -->
+        <div *ngIf="semestreSeleccionado === 'semestre6'">
+            <h5 class="text-lg font-bold mb-2">Materias del Semestre 6:</h5>
+            <div *ngFor="let materia of materiasSemestre6">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" [(ngModel)]="materia.selected" class="form-checkbox text-blue-500">
+                    <span class="ml-2">{{ materia.nombre }}</span>
+                </label>
+            </div>
+        </div>
+        <div class=" bottom-4 right-4" >
+            <button (click)="guardarAsignatura()" class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded mr-2">Guardar</button>
+            <button (click)="closeDialog()" class="bg-gray-500 hover:bg-gray-700 text-white  py-2 px-4 rounded">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+

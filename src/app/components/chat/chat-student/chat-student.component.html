@@ -1,0 +1,30 @@
+<div class="chat-student">
+    <div class="chat-header">
+        <h2 class="chat-title">Chat</h2>
+        <div class="close-button" (click)="closeChat()">X</div>
+    </div>
+    <div class="chat-container" #chatContainer>
+        <div class="messages-container">
+            <div *ngFor="let message of messages | async; let last = last" class="message" [ngClass]="{ 'own-message': message.sender === currentUser }" #messageElement>
+                <div class="message-sender">{{ message.user }}</div>
+                <div class="message-info">
+                    <div class="message-content">{{ message.content }}</div>
+
+                    <button mat-icon-button [matMenuTriggerFor]="optionsMenu" class="options-button">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #optionsMenu="matMenu">
+
+                        <button mat-menu-item (click)="deleteMessage(message)">Eliminar</button>
+                    </mat-menu>
+                </div>
+                <div class="message-timestamp">{{ formatTimestamp(message.timestamp) }}</div>
+            </div>
+        </div>
+        <div class="input-container">
+            <textarea [(ngModel)]="newMessage" placeholder="Escribe tu mensaje"></textarea>
+            <button class="botondeenviar" (click)="sendMessage()">Enviar</button>
+        </div>
+    </div>
+</div>
+

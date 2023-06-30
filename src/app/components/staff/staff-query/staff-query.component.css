@@ -1,0 +1,25 @@
+.search-box {
+  padding: 8px;
+}
+
+.search-box input {
+  width: 188px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.search-box button {
+  width: 90px;
+}
+
+.search-button {
+  margin-right: 8px;
+}
+.delete {
+  background: red;
+  border-color: red;
+}
+.actualizar {
+  background: #0dc447;
+  border-color: #0dc447;
+}

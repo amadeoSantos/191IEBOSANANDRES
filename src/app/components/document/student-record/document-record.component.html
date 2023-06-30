@@ -1,0 +1,223 @@
+<div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 mb-4">
+  <div class="pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Perfil</h1>
+  </div>
+</div>
+<div class="flex flex-wrap">
+  <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 mb-4">
+    <form class="w-full max-w-lg">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="inner-adjust">
+            <div class="row" *ngIf="userData as user">
+              <div class="col-md-12">
+                <div class="media">
+                  <img
+                    class="align-self-start mr-5 img-thumbnail rounded-circle"
+                    src="{{
+                      user.photoURL ? user.photoURL : '/assets/dummy-user.png'
+                    }}"
+                    alt="{{ user.displayName }}"
+                  />
+                  <div class="media-body">
+                    <h1>
+                      <strong>{{
+                        user.displayName ? user.displayName : 'User'
+                      }}</strong>
+                    </h1>
+                    <p>
+                      <strong>{{ user.email }}</strong>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+      <div class="flex flex-wrap -mx-0 mb-6">
+        <div class="w-full md:w-1/1 px-3">
+          <button
+            class="bg-blue-500 hover:bg-green-500 text-white py-1 px-8 rounded-full"
+            (click)="abrirModal()"
+          >
+            Mostrar Informacion
+          </button>
+          <app-student-record
+            *ngIf="mostrarModal"
+          ></app-student-record>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div
+    class="w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 mb-4 bg-gray-50"
+    *ngIf="mostrarCampos"
+  >
+    <div class="flex flex-wrap -mx-2 mb-6">
+      <div class="flex flex-wrap -mx-0 mb-6">
+        <div class="w-full md:w-1/2 px-4 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+            Matricula
+          </label>
+          <div class="row">
+            <input
+                    [(ngModel)]="usuario.matricula"
+                    (ngModelChange)="actualizarDatos(usuario)"
+                    onlyNumber
+                    class="appearance-none block w-full bg-gray-100 text-black-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="ggrid-zip"
+                    type="text"
+            />
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 px-4 mb-6 md:mb-0">
+          <label
+            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          >
+            Numero Telefonico
+          </label>
+          <div class="row">
+            <input
+                    [(ngModel)]="usuario.telefono"
+                    (ngModelChange)="actualizarDatos(usuario)"
+                    onlyNumber
+                    maxlength="10"
+                    class="appearance-none block w-full bg-gray-100 text-black-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="telefono"
+                    type="text"
+                    placeholder="951 221 ** **"
+            />
+          </div>
+      </div>
+      <div class="w-full md:w-1/3 px-4 mb-6 md:mb-0">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        >
+          Grupo
+        </label>
+
+        <div class="relative">
+          <select
+            [(ngModel)]="usuario.grupo"
+            (ngModelChange)="actualizarDatos(usuario)"
+            class="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          >
+            <option>101</option>
+            <option>102</option>
+            <option>201</option>
+            <option>202</option>
+            <option>202</option>
+            <option>301</option>
+            <option>302</option>
+            <option>401</option>
+            <option>402</option>
+            <option>501</option>
+            <option>502</option>
+            <option>601</option>
+            <option>602</option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-1/3 px-4 mb-6 md:mb-0">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        >
+          Semestre
+        </label>
+        <div class="relative">
+          <input
+                  [(ngModel)]="usuario.semestre"
+
+                  class="appearance-none block w-full bg-gray-100 text-black-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  type="text"
+                  placeholder=""
+          />
+
+        </div>
+      </div>
+      <div class="w-full md:w-1/3 px-4 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+          Sexo
+        </label>
+
+        <div class="relative">
+          <select
+            [(ngModel)]="usuario.sexo"
+            (ngModelChange)="actualizarDatos(usuario)"
+            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="semestre"
+          >
+            <option>Masculino</option>
+            <option>Femenino</option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-4 mb-6 md:mb-0">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        >
+          Nombre Tutor
+        </label>
+        <div class="row">
+          <input
+                  [(ngModel)]="usuario.nombreTutor"
+                  (ngModelChange)="actualizarDatos(usuario)"
+                  (keypress)="validarTexto($event)"
+                  class="appearance-none block w-full bg-gray-100 text-black-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  type="text"
+                  placeholder=""
+          />
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 px-4 mb-6 md:mb-0">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        >
+          Telefono de tutor
+        </label>
+        <div class="row">
+          <input
+                  [(ngModel)]="usuario.telefonoTutor"
+                  (ngModelChange)="actualizarDatos(usuario)"
+                  onlyNumber
+                  maxlength="10"
+                  class="appearance-none block w-full bg-gray-100 text-black-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="telefonoTutor"
+                  type="text"
+                  placeholder="telefono"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

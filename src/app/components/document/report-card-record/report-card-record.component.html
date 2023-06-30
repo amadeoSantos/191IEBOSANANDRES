@@ -1,0 +1,41 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div class=" p-4">
+        <h2>Subir boletas</h2>
+        <div class="flex justify-center">
+            <select id="semestre-select" (change)="onSemestreChange($event)" class="p-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500">
+                <option value="">Seleccionar semestre</option>
+                <option *ngFor="let semestre of semestres" [value]="semestre">{{ semestre }} Semestre</option>
+            </select>
+
+            <div class="file-upload">
+                <input id="file-input" type="file" (change)="uploadFile($event)" style="display: none;">
+                <button class="custom-file-upload" (click)="selectFile()">
+                    Seleccionar archivo
+                </button>
+            </div>
+        </div>
+        <br>
+        <div class="progress-bar">
+            <div class="progress" [style.width]="uploadProgress + '%'"></div>
+        </div>
+        <br>
+        <div class="flex justify-center items-center">
+            <button (click)="downloadFile()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center space-x-2">
+                <i class="fas fa-download"></i>
+                <span>Descargar</span>
+            </button>
+        </div>
+    </div>
+    <div class="bg-gray-50 p-1" *ngIf="existeBoleta && selectedSemestre === this.selectedSemestre && fileURL;  else noArchivoUploaded">
+        <iframe id="file-iframe" class="w-full h-full" [src]="fileURL"></iframe>
+    </div>
+    <div >
+        <ng-template #noArchivoUploaded >
+            <div class="bg-gray-50 p-1 text-center" *ngIf="selectedSemestre" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+                <i class="fas fa-exclamation-circle text-red-500 fa-3x"></i>
+                <p class="text-red-500">No se ha subido ningún archivo.</p>
+                <p>Por favor, sube un archivo para este semestre.</p>
+            </div>
+        </ng-template>
+    </div>
+</div>

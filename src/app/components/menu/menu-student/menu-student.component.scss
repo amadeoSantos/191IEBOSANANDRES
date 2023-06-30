@@ -1,0 +1,97 @@
+.logo {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 900;
+  color: white;
+}
+
+h1 {
+  height: 100%;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 100%;
+  font-family: Vegur, 'PT Sans', Verdana, sans-serif;
+  padding-left: 0px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #f3f2f0;
+  margin-top: calc(18vh - 100px);
+  font-weight: 900;
+  font-style: initial;
+  text-align: center;
+}
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+  background: rgb(28, 150, 23);
+  background-image: url(https://www.iebo.edu.mx/wp-includes/images/fondotriangulos-02.png);
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: transparent;
+}
+.grid-container {
+  margin: 0px;
+}
+
+.dashboard-card {
+  background-image: url(https://www.iebo.edu.mx/wp-includes/images/fondotriangulos-02.png);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+nz-divider {
+  color: #333;
+  font-weight: initial;
+}
+.inner-box {
+  padding: 1px 0;
+  text-align: right;
+}
+.right-layout {
+  background: #21a20d;
+  height: 75px;
+  background-image: url(https://www.iebo.edu.mx/wp-includes/images/fondotriangulos-02.png);
+}
+.inner-boxxx {
+  padding: 0px 0;
+  text-align: left;
+}
+
+.rounded-circle {
+  max-width: 60px;
+  min-width: 10px;
+  margin: 0 auto 5px !important;
+  display: block;
+}
+.media {
+  display: block;
+}
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border-radius: 50%;
+  background-color: #6edc0c;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

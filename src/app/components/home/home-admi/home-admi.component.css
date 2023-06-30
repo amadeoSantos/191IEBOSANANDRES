@@ -1,0 +1,45 @@
+[nz-carousel-content] {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  overflow: hidden;
+}
+
+.titulo {
+  text-align: center;
+}
+.example-card {
+  max-width: 90%;
+}
+nz-divider {
+  color: #333;
+  font-weight: normal;
+}
+.inner-box {
+  padding: 8px 0;
+  text-align: center;
+}
+mat-grid-tile {
+  left: 100px;
+  right: 100px;
+  text-align: center;
+}
+
+.login {
+  font-size: 32px;
+  font-weight: 900;
+  text-align: center;
+  background: white;
+}
+.nombre {
+  font-size: 26px;
+  font-weight: 900;
+  text-align: center;
+  background: white;
+}
+.eula {
+  color: #999;
+  font-size: 12px;
+  text-align: center;
+  background: white;
+}

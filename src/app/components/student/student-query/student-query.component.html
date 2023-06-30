@@ -1,0 +1,54 @@
+
+  <div class="bg-white py-4">
+    <h2 class="text-3xl text-center font-bold text-gray-800">Estudiantes</h2>
+  </div>
+  <div class="flex items-center mb-4">
+    <h1 class="text-xl font-bold mr-2">Buscar:</h1>
+    <input class="w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+           type="text"
+           [(ngModel)]="terminoBusqueda"
+           (ngModelChange)="filtrarEstudiantes()"
+           placeholder="Ingresa la matrícula, grupo o semestre...">
+  </div>
+
+  <div class="max-h-60 overflow-y-auto">
+    <table class="min-w-full">
+      <thead>
+      <tr>
+        <th class=" px-4 py-2  sticky left-0 top-0 z-10 bg-gray-200">Matricula</th>
+        <th class="px-4 py-2 sticky px-4 top-0 bg-gray-200 ">Nombre</th>
+        <th class="px-4 py-2 sticky top-0 bg-gray-200">Grupo</th>
+        <th class="px-4 py-2 sticky top-0 bg-gray-200">Semestre</th>
+        <th class="px-4 py-2 sticky top-0 bg-gray-200">Sexo</th>
+        <th class="px-4 py-2 sticky top-0 bg-gray-200">Teléfono</th>
+        <th class="px-4 py-2 sticky top-0 bg-gray-200">Correo</th>
+        <th class="px-4 py-2 sticky top-0 bg-gray-200">Nombre tutor</th>
+        <th class="px-4  py-2 sticky top-0 bg-gray-200">Teléfono tutor</th>
+        <th class="px-4  py-2 sticky  right-0 top-0 z-10 bg-gray-200">Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Aquí se itera sobre los datos para generar las filas de la tabla -->
+    <tr *ngFor="let estudiante of resultadosFiltrados">
+      <td class="sticky left-0 bg-white">{{ estudiante.matricula }}</td>
+      <td class="px-4 py-2">{{ estudiante.nombre }}</td>
+      <td class="px-4 py-2">{{ estudiante.grupo }}</td>
+      <td class="px-4 py-2">{{ estudiante.semestre }}</td>
+      <td class="px-4 py-2">{{ estudiante.sexo }}</td>
+      <td class="px-4 py-2">{{ estudiante.telefono }}</td>
+      <td class="px-4 py-2">{{ estudiante.correo }}</td>
+      <td class="px-4 py-2">{{ estudiante.nombreTutor }}</td>
+      <td class="px-4 py-2">{{ estudiante.telefonoTutor }}</td>
+      <td class="sticky right-0 bg-white">
+        <button mat-icon-button color="primary" class="button-icon button-icon-blue" (click)="openDocumentosModal(estudiante.id)">
+          <mat-icon>description</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" class="button-icon button-icon-red" (click)="boletasCalificacion(estudiante.id)">
+          <mat-icon>assignment</mat-icon>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

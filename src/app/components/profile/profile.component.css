@@ -1,0 +1,11 @@
+.perfil {
+  height: 80px;
+  width: 80px;
+  color: white;
+  background: #1890ff;
+  font-size: 30px;
+  left: 30px;
+}
+p {
+  margin: 0;
+}

@@ -1,0 +1,10 @@
+nz-select {
+  width: 200px;
+}
+.matricula {
+  margin-bottom: 16px;
+  height: 30px;
+}
+mat-grid-tile {
+  background: lightblue;
+}

@@ -1,0 +1,15 @@
+mat-grid-tile {
+  background-color: #ffffff;
+}
+.mat-stepper-horizontal {
+  margin: 8px;
+}
+
+.mat-mdc-form-field {
+  margin: 16px;
+}
+.tituloP{
+  text-align: end;
+  color: #21a20d;
+  font-family: "Arial Black", serif;
+}

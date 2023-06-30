@@ -1,0 +1,47 @@
+<div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 mb-4">
+  <div class="w-full md:w-1/1 px-10 mb-6 md:mb-0">
+    <h1>Personal</h1>
+  </div>
+</div>
+<nz-table
+
+  [nzScroll]="{ x: '1800px', y: '300px' }"
+>
+  <thead>
+    <tr>
+      <th nzLeft>Nombre</th>
+      <th>Apellido</th>
+      <th>Teléfono</th>
+      <th>Sexo</th>
+      <th>Fecha de Nacimiento</th>
+      <th>RFC</th>
+      <th>Correo</th>
+      <th>Puesto</th>
+      <th nzRight>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let persona of personalList | async">
+      <td nzLeft>{{ persona.nombre }}</td>
+      <td nzBreakWord>{{ persona.apellido }}</td>
+      <td nzBreakWord>{{ persona.telefono }}</td>
+      <td nzBreakWord>{{ persona.sexo }}</td>
+      <td nzBreakWord>{{ persona.fechaNacimiento }}</td>
+      <td nzBreakWord>{{ persona.id}}</td>
+      <td nzBreakWord>{{ persona.correo }}</td>
+      <td nzBreakWord>{{ persona.puesto }}</td>
+      <td nzRight>
+        <a>
+
+          <button class="agregar-asignatura" nz-button nzType="primary" (click)="openAsignaturaModal(persona.id)">
+            <span nz-icon nzType="book"></span>
+          </button>
+
+          <button class="delete" nz-button nzType="primary" (click)="eliminarDocente(persona.id)">
+            <span nz-icon nzType="delete"></span>
+          </button>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

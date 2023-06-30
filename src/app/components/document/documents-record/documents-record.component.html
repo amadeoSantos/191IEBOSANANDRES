@@ -1,0 +1,175 @@
+<h1 class="entry-title">Documentos</h1>
+<table class="min-w-full border border-gray-300">
+  <thead>
+  <tr>
+    <th class="px-4 py-2 bg-gray-200 text-gray-700 border-b">Nombre</th>
+    <th class="px-4 py-2 bg-gray-200 text-gray-700 border-b">Documento</th>
+    <th class="px-4 py-2 bg-gray-200 text-gray-700 border-b">Acción</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="px-6 py-2 border-b">
+      <div class="flex items-center">
+        <div>
+          <p class="text-sm font-medium text-gray-900">CURP</p>
+          <p class="text-xs text-gray-500">CURP en pdf</p>
+        </div>
+      </div>
+    </td>
+    <td class="px-6 py-2 border-b">
+      <div class="flex items-center">
+        <div>
+          <p class="text-sm font-medium text-gray-900">
+            <button id="botonGuardadoCurp" [disabled]=true mat-icon-button
+                    [ngClass]="{'bg-green-500':  botonGuardadoCurp}"
+                    class="bg-gray-400 text-white rounded-full w-8 h-8">
+              <mat-icon class="text-xl">check</mat-icon>
+            </button>
+            Documento CURP</p>
+        </div>
+      </div>
+    </td>
+    <td class="px-6 py-2 border-b">
+      <button class="mr-2 px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
+              (click)="fileInput.click()">
+        <mat-icon>cloud_upload</mat-icon>
+      </button>
+      <input type="file" #fileInput style="display: none" accept="application/pdf"
+             (change)="subirArchivo('CURP.pdf', $event)">
+      <button class="mr-2 px-3 py-2 bg-green-500 hover:bg-green-600 text-white rounded"
+              (click)="descargarArchivo('CURP.pdf', 'CURP.pdf')">
+        <mat-icon>cloud_download</mat-icon>
+      </button>
+      <button class="px-3 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+              (click)="eliminarArchivo('CURP.pdf', 'CURP.pdf')">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </tr>
+  <!-- Resto de las filas -->
+  <tr>
+    <td class="px-6 py-2 border-b">
+      <div class="flex items-center">
+        <div>
+          <p class="text-sm font-medium text-gray-900">ACTA</p>
+          <p class="text-xs text-gray-500">ACTA en pdf</p>
+        </div>
+      </div>
+    </td>
+    <td class="px-6 py-2 border-b">
+      <div class="flex items-center">
+        <div>
+          <p class="text-sm font-medium text-gray-900">
+            <button id="botonGuardadoActa" [disabled]=true mat-icon-button
+                    [ngClass]="{'bg-green-500':  botonGuardadoActa}"
+                    class="bg-gray-400 text-white rounded-full w-8 h-8">
+              <mat-icon class="text-xl">check</mat-icon>
+            </button>
+            Documento ACTA</p>
+        </div>
+      </div>
+    </td>
+    <td class="px-6 py-2 border-b">
+      <button class="mr-2 px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
+              (click)="fileInputACTA.click()">
+        <mat-icon>cloud_upload</mat-icon>
+      </button>
+      <input type="file" #fileInputACTA style="display: none" accept="application/pdf"
+             (change)="subirArchivo('ACTA.pdf', $event)">
+      <button class="mr-2 px-3 py-2 bg-green-500 hover:bg-green-600 text-white rounded"
+              (click)="descargarArchivo('ACTA.pdf', 'ACTA.pdf')">
+        <mat-icon>cloud_download</mat-icon>
+      </button>
+      <button class="px-3 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+              (click)="eliminarArchivo('ACTA.pdf', 'ACTA.pdf')">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="px-6 py-2 border-b">
+      <div class="flex items-center">
+        <div>
+          <p class="text-sm font-medium text-gray-900">CERTIFICADO MEDICO</p>
+          <p class="text-xs text-gray-500">
+            CERTIFICADO MEDICO en pdf</p>
+        </div>
+      </div>
+    </td>
+    <td class="px-6 py-2 border-b">
+      <div class="flex items-center">
+        <div>
+          <p class="text-sm font-medium text-gray-900">
+            <button id="botonGuardadoC"  [disabled]=true mat-icon-button
+                    [ngClass]="{'bg-green-500':  botonGuardadoCertificadoMedico}"
+                    class="bg-gray-400 text-white rounded-full w-8 h-8">
+              <mat-icon class="text-xl">check</mat-icon>
+            </button>
+            Documento CERTIFICADO MEDICO</p>
+        </div>
+      </div>
+    </td>
+    <td class="px-6 py-2 border-b">
+      <button class="mr-2 px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
+              (click)="fileInputCERTIFICADO.click()">
+        <mat-icon>cloud_upload</mat-icon>
+      </button>
+      <input type="file" #fileInputCERTIFICADO style="display: none" accept="application/pdf"
+             (change)="subirArchivo('CERTIFICADO MEDICO.pdf', $event)">
+      <button class="mr-2 px-3 py-2 bg-green-500 hover:bg-green-600 text-white rounded"
+              (click)="descargarArchivo('CERTIFICADO MEDICO.pdf', 'CERTIFICADO MEDICO.pdf')">
+        <mat-icon>cloud_download</mat-icon>
+      </button>
+      <button class="px-3 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+              (click)="eliminarArchivo('CERTIFICADO MEDICO.pdf', 'CERTIFICADO MEDICO.pdf')">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="px-6 py-2 border-b">
+      <div class="flex items-center">
+        <div>
+          <p class="text-sm font-medium text-gray-900">CERTIFICADO</p>
+          <p class="text-xs text-gray-500">CERTIFICADO en pdf</p>
+        </div>
+      </div>
+    </td>
+    <td class="px-6 py-2 border-b">
+      <div class="flex items-center">
+        <div>
+          <p class="text-sm font-medium text-gray-900">
+            <button id="botonGuardadoCertificadoS" [disabled]=true mat-icon-button
+                    [ngClass]="{'bg-green-500':  botonGuardadoCertificadoS}"
+                    class="bg-gray-400 text-white rounded-full w-8 h-8">
+              <mat-icon class="text-xl">check</mat-icon>
+            </button>
+            Documento CERTIFICADO</p>
+        </div>
+      </div>
+    </td>
+    <td class="px-6 py-2 border-b">
+      <button class="mr-2 px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
+              (click)="fileInputCERTIFICADOS.click()">
+        <mat-icon>cloud_upload</mat-icon>
+      </button>
+      <input type="file" #fileInputCERTIFICADOS style="display: none" accept="application/pdf"
+             (change)="subirArchivo('CERTIFICADO.pdf', $event)">
+      <button class="mr-2 px-3 py-2 bg-green-500 hover:bg-green-600 text-white rounded"
+              (click)="descargarArchivo('CERTIFICADO.pdf', 'CERTIFICADO.pdf')">
+        <mat-icon>cloud_download</mat-icon>
+      </button>
+      <button class="px-3 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+              (click)="eliminarArchivo('CERTIFICADO.pdf', 'CERTIFICADO.pdf')">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<app-message *ngIf="mostrarMensaje" [titulo]="titulo" [mensaje]="mensaje" (cerrar)="cerrarDialogo()">
+</app-message>
+

@@ -1,0 +1,40 @@
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th></th>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Documento</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <label nz-checkbox [(ngModel)]="checked"></label>
+      <td>{{ data.key }}</td>
+      <td>{{ data.name }}</td>
+      <td></td>
+      <td>
+        <button
+          (click)="listo()"
+          nz-button
+          nzType="primary"
+          [nzSize]="size"
+          nzShape="round"
+        >
+          <span nz-icon nzType="download"></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<button
+  class="listo"
+  nz-button
+  nzType="primary"
+  [nzSize]="size"
+  nzShape="round"
+>
+  <span nz-icon nzType="check"></span>
+  LISTO
+</button>

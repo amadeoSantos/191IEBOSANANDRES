@@ -1,0 +1,57 @@
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <h3>Inicio de Sesión</h3>
+      <div class="eula">
+        Instituto De Estudios De Bachillerato Del Estado De Oaxaca
+      </div>
+      <div class="formGroup">
+        <input
+                type="text"
+                class="formControl"
+                placeholder="Correo"
+                #userName
+                required
+        />
+      </div>
+      <div class="formGroup">
+        <input
+                type="password"
+                class="formControl"
+                placeholder="Contraseña"
+                #userPassword
+                required
+        />
+      </div>
+      <!-- Llamada a la API SignIn desde AuthService -->
+      <div class="formGroup">
+        <input
+                type="button"
+                class="btn btnPrimary"
+                value="Iniciar sesión"
+                (click)="SignIn(userName.value, userPassword.value)"
+        />
+      </div>
+
+      <div class="formGroup">
+        <span class="or"><span class="orInner">O</span></span>
+      </div>
+      <!-- Llamada a la API GoogleAuth desde AuthService -->
+      <div class="formGroup">
+        <button
+                type="button"
+                class="btn googleBtn"
+                (click)="GoogleAuth()"
+        >
+          <i class="fab fa-google-plus-g"></i>
+          Iniciar sesión con Google
+        </button>
+      </div>
+      <div class="forgotPassword">
+        <span routerLink="/forgot-password">
+          ¿Olvidaste tu contraseña?
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

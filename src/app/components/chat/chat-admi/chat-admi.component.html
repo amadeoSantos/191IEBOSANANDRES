@@ -1,0 +1,19 @@
+<div class="chat-student">
+    <div class="chat-header">
+        <h2 class="chat-title">Chat</h2>
+        <div class="close-button" (click)="closeChat()">X</div>
+    </div>
+    <div class="chat-container" #chatContainer>
+        <div class="messages-container">
+            <div *ngFor="let message of messages | async" class="message">
+                <div class="message-sender">{{ message.sender }}</div>
+                <div class="message-content">{{ message.content }}</div>
+            </div>
+        </div>
+        <div class="input-container">
+            <textarea [(ngModel)]="newMessage" placeholder="Escribe tu mensaje"></textarea>
+            <button class="botondeenviar" (click)="sendMessage()">Enviar</button>
+        </div>
+    </div>
+</div>
+

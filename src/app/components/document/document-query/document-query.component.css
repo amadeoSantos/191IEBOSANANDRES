@@ -1,0 +1,6 @@
+@media (max-width: 600px) {
+  .mat-table {
+    overflow-x: auto;
+    display: block;
+  }
+}

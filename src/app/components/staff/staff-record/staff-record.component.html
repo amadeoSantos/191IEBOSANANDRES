@@ -1,0 +1,90 @@
+<div class="max-w-3xl mx-auto bg-gray-200 p-6 rounded-md shadow-md">
+    <form #myForm="ngForm" (ngSubmit)="guardarDatos(
+        nombrePersonal,
+        apellidoPersonal,
+        telefonoPersonal,
+        sexoPersonal,
+        fechaNacimientoPersonal,
+        rfcPersonal,
+        correoPersonal,
+        passwordPersonal,
+        puestoPersonal
+    )" >
+        <h1 class="text-center">Registro de personal</h1>
+        <div class="grid grid-cols-3 gap-8">
+            <div class="col-span-1">
+                <label for="nombre" class="block mb-2">Nombre:</label>
+                <input type="text" [(ngModel)]="nombrePersonal" id="nombre" name="nombre" required class="w-full border-gray-300 rounded-md px-4 py-2 mb-4">
+                <span *ngIf="myForm.controls['nombre']?.touched && myForm.controls['nombre'].errors?.['required']" class="text-red-500">Por favor, ingresa un nombre.</span>
+
+                <label for="apellidos" class="block mb-2">Apellidos:</label>
+                <input type="text" [(ngModel)]="apellidoPersonal" id="apellidos" name="apellidos" required class="w-full border-gray-300 rounded-md px-4 py-2 mb-4"
+                       (keypress)="validarTexto($event)"
+                       placeholder="Apellidos"
+                       title="Ingrese solo caracteres de texto"
+                >
+                <span *ngIf="myForm.controls['apellidos']?.touched && myForm.controls['apellidos'].errors?.['required']" class="text-red-500">Por favor, ingresa los apellidos.</span>
+
+                <label for="telefono" class="block mb-2">Teléfono:</label>
+                <input type="text" [(ngModel)]="telefonoPersonal" id="telefono" name="telefono" required class="w-full border-gray-300 rounded-md px-4 py-2 mb-4"
+                       [class.invalid]="telefonoPersonal && !validarTelefono(telefonoPersonal)"
+                       pattern="[0-9]{10}"
+                       inputmode="numeric"
+                       placeholder="Teléfono"
+                       title="Ingrese un número telefónico válido (10 dígitos)"
+                >
+                <div *ngIf="telefonoPersonal && !validarTelefono(telefonoPersonal)" class="text-red-500 mt-1">Ingrese un número telefónico válido (10 dígitos)</div>
+                <span *ngIf="myForm.controls['telefono']?.touched && myForm.controls['telefono'].errors?.['required']" class="text-red-500">Por favor, ingresa un número de teléfono.</span>
+
+            </div>
+
+
+            <div class="col-span-1">
+                <label for="sexo" class="block mb-2">Sexo:</label>
+                <select id="sexo" [(ngModel)]="sexoPersonal" name="sexo" required class="w-full border-gray-300 rounded-md px-4 py-2 mb-4">
+                    <option value="">Seleccionar</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                </select>
+
+                <label for="fechaNacimiento" class="block mb-2">Fecha de Nacimiento:</label>
+                <input type="date" [(ngModel)]="fechaNacimientoPersonal" id="fechaNacimiento" name="fechaNacimiento" required class="w-full border-gray-300 rounded-md px-4 py-2 mb-4">
+
+                <label for="rfc" class="block mb-2">RFC:</label>
+                <input type="text" [(ngModel)]="rfcPersonal" id="rfc" name="rfc" required class="w-full border-gray-300 rounded-md px-4 py-2 mb-4"
+                       [class.invalid]="rfcPersonal && !validarRFC(rfcPersonal)"
+                       placeholder="RFC"
+                       title="Ingrese un RFC válido"
+                >
+                <div *ngIf="rfcPersonal && !validarRFC(rfcPersonal)" class="text-red-500 mt-1">Ingrese un RFC válido</div>
+            </div>
+
+            <div class="col-span-1">
+                <label for="correo" class="block mb-2">Correo:</label>
+                <input type="email" id="correo" [(ngModel)]="correoPersonal" name="correo" required class="w-full border-gray-300 rounded-md px-4 py-2 mb-4">
+                <span *ngIf="myForm.controls['correo'] && myForm.controls['correo'].invalid && myForm.controls['correo'].touched" class="text-red-500">El correo no es válido</span>
+
+                <label for="contrasena" class="block mb-2">Contraseña:</label>
+                <div class="relative">
+                    <input type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="passwordPersonal" id="contrasena" name="contrasena" required class="w-full border-gray-300 rounded-md px-4 py-2 mb-4">
+                    <button class="absolute top-2 right-4 focus:outline-none" (click)="togglePasswordVisibility()">
+                        <svg class="w-6 h-6" [ngClass]="{'text-gray-500': showPassword, 'text-gray-700': !showPassword}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path [ngClass]="{'hidden': !showPassword}" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.536 8.464A9.986 9.986 0 0 0 12 6a9.986 9.986 0 0 0-3.536 2.464M12 16c-2.34 0-4.614-.878-6.364-2.636M12 16c2.34 0 4.614-.878 6.364-2.636M12 16c.928 0 1.837-.232 2.636-.636M12 16c-.928 0-1.837-.232-2.636-.636M2 12s4-8 10-8 10 8 10 8-4 8-10 8S2 12 2 12zm0 0h0"></path>
+                            <path [ngClass]="{'hidden': showPassword}" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <label for="puesto" class="block mb-2">Puesto:</label>
+                <select id="puesto" value="" [(ngModel)]="puestoPersonal" name="puesto" required class="w-full border-gray-300 rounded-md px-4 py-2 mb-4">
+                    <option >Seleccionar</option>
+                    <option value="administrativo">Administrativo</option>
+                    <option value="docente">Docente</option>
+                </select>
+            </div>
+        </div>
+        <div class="flex justify-end mt-6">
+            <button type="submit"  [disabled]="!myForm.valid" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mr-2">Guardar</button>
+            <button type="button" onclick="cancelar()" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">Cancelar</button>
+        </div>
+    </form>
+</div>

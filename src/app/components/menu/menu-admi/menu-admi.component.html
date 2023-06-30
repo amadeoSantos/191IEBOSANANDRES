@@ -1,0 +1,110 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <!-- Contenido del menú lateral -->
+    <mat-toolbar>
+      <div class="logo">
+        <h1>IEBO PL.191</h1>
+      </div>
+    </mat-toolbar>
+    <mat-nav-list>
+      <nz-sider>
+        <ul nz-menu nzTheme="light" nzMode="inline">
+          <!-- Opciones de menú -->
+          <li (click)="homeAdmin()" nz-menu-item>
+            <i nz-icon nzType="home" nzTheme="outline"></i>
+            <span>INICIO</span>
+          </li>
+          <li nz-submenu nzOpen nzTitle="Docente" nzIcon="form">
+            <ul class="submenu">
+              <li (click)="staffRecords()" nz-menu-item nzMatchRouter>
+                <a>Registrar</a>
+              </li>
+              <li (click)="staffQuerys()" nz-menu-item nzMatchRouter>
+                <a routerLink="/documents">Consultar</a>
+              </li>
+            </ul>
+          </li>
+          <li nz-submenu nzOpen nzTitle="Estudiantes" nzIcon="search">
+            <ul class="submenu">
+              <li (click)="studentQuerys()" nz-menu-item nzMatchRouter>
+                <a routerLink="/documents">Consultar</a>
+              </li>
+            </ul>
+          </li>
+          <li (click)="authService.SignOut()" nz-menu-item>
+            <i nz-icon nzType="form" nzTheme="outline"></i>
+            <span>Cerrar Sesión</span>
+          </li>
+        </ul>
+      </nz-sider>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- Contenido principal -->
+    <nz-header class="right-layout">
+      <div class="perfil" nz-row [nzGutter]="[12, 24]">
+        <div nz-col class="gutter-row" [nzSpan]="4">
+          <div class="inner-boxxx">
+            <mat-toolbar color="primary">
+              <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+              </button>
+            </mat-toolbar>
+          </div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="6">
+          <div class="inner-boxx"></div>
+        </div>
+      </div>
+    </nz-header>
+    <div class="grid-container">
+      <div class="flex flex-wrap">
+        <div class="w-full sm:w-1/2 md:w-1/1 lg:w-1/2 xl:w-1/3 dashboard-card">
+          <!-- Contenido de la tarjeta 1 -->
+          <mat-grid-list cols="1">
+            <div class="flex flex-shrink-0 items-center">
+              <img src="../../../assets/LOGO-IEBO-23A (1).png" height="100%" width="100%" />
+            </div>
+          </mat-grid-list>
+        </div>
+        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/3 dashboard-card">
+          <!-- Contenido de la tarjeta 2 -->
+          <mat-grid-list cols="1">
+            <div class="flex flex-shrink-0 items-center">
+              <img src="../../../assets/logo.png" height="100%" width="100%" />
+            </div>
+          </mat-grid-list>
+        </div>
+        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/3 dashboard-card">
+          <!-- Contenido de la tarjeta 3 -->
+          <br />
+          <div nz-col class="gutter-row" [nzSpan]="8">
+            <div class="inner-box">
+              <a href="https://www.facebook.com/iebo.paxtlan" target="_blank">
+                <nz-avatar style="background-color: #0b53dc" nz-tooltip nzTooltipTitle="NG-ZORRO User" nzIcon="facebook"></nz-avatar>
+              </a>
+              <a href="http://iebo191.blogspot.com/" target="_blank">
+                <nz-avatar style="background-color: #f3730b" nz-tooltip nzTooltipTitle="NG-ZORRO User" nzIcon="block"></nz-avatar>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Componentes condicionales basados en variables -->
+    <app-home-admi *ngIf="this.home"></app-home-admi>
+    <app-student-record *ngIf="this.documentoRecord"></app-student-record>
+    <app-student-record *ngIf="studentRecord"></app-student-record>
+    <app-staff-record *ngIf="this.staffRecord"></app-staff-record>
+    <app-staff-query *ngIf="this.staffQuery"></app-staff-query>
+    <app-student-query *ngIf="this.studentQuery"></app-student-query>
+    <!-- Botón flotante -->
+    <button class="floating-button" (click)="toggleChat()">
+      <i class="fas fa-comment"></i>
+    </button>
+    <!-- Componente de chat -->
+    <ng-container *ngIf="showChat">
+      <app-chat-student></app-chat-student>
+    </ng-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>

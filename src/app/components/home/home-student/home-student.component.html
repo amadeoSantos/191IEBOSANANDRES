@@ -1,0 +1,41 @@
+<div nz-row [nzGutter]="[24, 32]">
+  <div nz-col class="gutter-row" [nzSpan]="24">
+    <div class="inner-box">
+      <div class="row" *ngIf="authService.userData as user">
+        <div class="col-md-12">
+          <div class="media">
+            <div class="media-body">
+              <h1>
+                <strong>{{
+                  user.displayName ? user.displayName : 'User'
+                }}</strong>
+              </h1>
+              <p>
+                <strong>{{ user.email }}</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-grid-list cols="1" rowHeight="2:0.6">
+  <mat-grid-tile>
+    <nz-carousel nzAutoPlay>
+      <div nz-carousel-content>
+        <img src="../../../assets/img1.svg" height="100%" width="100%" />
+      </div>
+      <div nz-carousel-content>
+        <img src="../../../assets/img2.svg" height="100%" width="100%" />
+      </div>
+      <div nz-carousel-content>
+        <img src="../../../assets/img3.svg" height="100%" width="100%" />
+      </div>
+      <div nz-carousel-content>
+        <img src="../../../assets/img6.svg" height="100%" width="100%" />
+      </div>
+    </nz-carousel>
+  </mat-grid-tile>
+</mat-grid-list>

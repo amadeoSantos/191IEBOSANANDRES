@@ -1,0 +1,45 @@
+<div class="max-w-6xl mx-auto  p-6 -md ">
+<div nz-row [nzGutter]="[16, 24]">
+  <div nz-col class="gutter-row" [nzSpan]="24">
+    <div class="inner-box">
+      <h1 class="entry-title">Consulta de Boletas</h1>
+    </div>
+  </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+  <!-- Primer Grid -->
+  <div class=" bg-gray-50 p-4 md:col-span-1 flex flex-col justify-center items-center">
+
+    <label for="semestre-select" class="font-bold mr-1 align-content-end">Selecciona un semestre:</label>
+    <div class="my-4 flex items-center">
+
+      <select id="semestre-select" (change)="onSemestreChange($event)" class="p-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500">
+        <option value="">Seleccionar semestre</option>
+        <option *ngFor="let semestre of opcionesSemestres" [value]="semestre">{{ semestre }}ª Semestre</option>
+      </select>
+    </div>
+    <button (click)="downloadFile()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center space-x-2">
+      <i class="fas fa-download"></i>
+      <span>Descargar</span>
+    </button>
+  </div>
+  <!-- Segundo Grid -->
+  <div class="bg-gray-100 p-1 md:col-span-3">
+<h2>Boleta del {{this.semestreSeleccionado}} Semestre</h2>
+    <div class=" p-1 h-64" *ngIf="existeBoleta && semestreSeleccionado === this.semestreSeleccionado && fileURL;  else noArchivoUploaded">
+      <iframe id="file-iframe" class="w-full h-full" [src]="fileURL"></iframe>
+    </div>
+    <div >
+      <ng-template #noArchivoUploaded >
+        <div class="bg-gray-63 p-1 text-center" *ngIf="semestreSeleccionado" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+          <i class="fas fa-exclamation-circle text-red-500 fa-3x"></i>
+          <p class="text-red-500"></p>
+          <p>No se ha subido la boleta del {{this.semestreSeleccionado}} Semestre</p>
+        </div>
+      </ng-template>
+    </div>
+    <!-- Contenido del Grid 2 -->
+  </div>
+
+</div>
+  </div>
